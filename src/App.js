@@ -1,7 +1,34 @@
-import "./App.css"
-
+import { useState } from "react";
+import "./App.css";
+import data from "./studentRecord.json";
+import { nanoid } from "nanoid";
 
 function App() {
+  const [students, setStudents] = useState(data);
+  const [addStudent, setAddStudent] = useState({
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const handleInputChange = (event, names) => {
+    event.preventDefault();
+    setAddStudent({ ...addStudent, [names]: event.target.value });
+  };
+
+  const addSubmitHandler = (event) => {
+    event.preventDefault();
+    const newStudent = {
+      id: nanoid(),
+      fullName: addStudent.fullName,
+      address: addStudent.address,
+      phoneNumber: addStudent.phoneNumber,
+      email: addStudent.email,
+    };
+    const newStudents = [...students, newStudent];
+    setStudents(newStudents);
+  };
   return (
     <div className="app-container">
       <table>
@@ -14,14 +41,48 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Milen Fiseha</td>
-            <td>19 bywater, London</td>
-            <td>0789576856</td>
-            <td>milen.ha2gmail.com</td>
-          </tr>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td>{student.fullName}</td>
+              <td>{student.address}</td>
+              <td>{student.phoneNumber}</td>
+              <td>{student.email}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      <h2>Add a student</h2>
+      <form onSubmit={addSubmitHandler}>
+        <input
+          type="text"
+          name="fullName"
+          required="required"
+          placeholder="Enter fullName..."
+          onChange={(event) => handleInputChange(event, "fullName")}
+        />
+        <input
+          type="text"
+          name="address"
+          required="required"
+          placeholder="Enter address..."
+          onChange={(event) => handleInputChange(event, "address")}
+        />
+        <input
+          type="text"
+          name="PhoneNumber"
+          required="required"
+          placeholder="Enter phone number.."
+          onChange={(event) => handleInputChange(event, "phoneNumber")}
+        />
+        <input
+          type="text"
+          name="email"
+          required="required"
+          placeholder="Enter email..."
+          onChange={(event) => handleInputChange(event, "email")}
+        />
+        <button type="submit">Add</button>
+      </form>
     </div>
   );
 }

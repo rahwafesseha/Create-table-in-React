@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "fullName": "Milen Fiseha",
+    "address": "19 bywater, London",
+    "phoneNumber": "0789576856",
+    "email": "milen.ha2gmail.com"
+  },
+  {
+    "id": 2,
+    "fullName": "Aman Michael",
+    "address": "34 shortlands road",
+    "phoneNumber": "0785678675",
+    "email": "aman.mik@email.com"
+  },
+  {
+    "id": 3,
+    "fullName": "Harry Jay",
+    "address": "43 shortlands road",
+    "phoneNumber": "0789785767",
+    "email": "harry.j@email.com"
+  },
+  {
+    "id": 4,
+    "fullName": "John Kerry",
+    "address": "24 miltown street",
+    "phoneNumber": "0794675864",
+    "email": "john.kerk@email.com"
+  },
+  {
+    "id": 5,
+    "fullName": "Kake Fish",
+    "address": "12 old street",
+    "phoneNumber": "0745675756",
+    "email": "kake.fish@email.com"
+  }
+]

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import data from "./studentRecord.json";
 import { nanoid } from "nanoid";
+import StudentRow from "./components/StudentRow";
 
 function App() {
   const [students, setStudents] = useState(data);
@@ -41,13 +42,8 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {students.map((student, index) => (
-            <tr key={index}>
-              <td>{student.fullName}</td>
-              <td>{student.address}</td>
-              <td>{student.phoneNumber}</td>
-              <td>{student.email}</td>
-            </tr>
+          {students.map((student) => (
+           <StudentRow student={student}/>
           ))}
         </tbody>
       </table>
